@@ -1,0 +1,11 @@
+{
+  "name": "bendrabucio-back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "graphql": "^14.1.1",
+    "mariadb": "^2.0.3"
+  }
+}

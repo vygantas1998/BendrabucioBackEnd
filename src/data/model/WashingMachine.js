@@ -3,7 +3,7 @@ import "@babel/polyfill";
 
 
 const pool = mariadb.createPool({
-     host: '5.79.67.197', 
+     host: '5.79.67.193', 
      user:'vygantas1998', 
      password: 'flDH34ak',
      database: 'bendrabutis',

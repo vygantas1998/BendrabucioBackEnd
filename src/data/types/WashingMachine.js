@@ -16,6 +16,7 @@ const washingMachineType = new GraphQLObjectType({
         id: globalIdField("WashingMachine"),
         title: { type: GraphQLString },
         image_url: { type: GraphQLString },
+        description: { type: GraphQLString },
         created_at: { type: GraphQLString },
         updated_at: { type: GraphQLString },
     }),

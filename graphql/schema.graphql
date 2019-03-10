@@ -38,6 +38,7 @@ type WashingMachine implements Node {
   id: ID!
   title: String
   image_url: String
+  description: String
   created_at: String
   updated_at: String
 }

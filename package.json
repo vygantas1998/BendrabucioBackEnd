@@ -4,8 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
+    "graphql-relay": "^0.6.0",
     "mariadb": "^2.0.3"
+  },
+  "scripts": {
+    "start": "node ./lib/server.js",
+    "build": "./node_modules/.bin/babel src -d lib"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4"
   }
 }

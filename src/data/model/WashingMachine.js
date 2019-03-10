@@ -4,8 +4,8 @@ import "@babel/polyfill";
 
 const pool = mariadb.createPool({
      host: 'localhost', 
-     user:'root', 
-     password: '',
+     user:'vygantas1998', 
+     password: 'flDH34ak',
      database: 'bendrabutis',
      connectionLimit: 5
 });

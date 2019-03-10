@@ -11,7 +11,7 @@ app.use('/graphql', graphqlHTTP({
   schema: Schema,
   graphiql: true,
 }));
-app.listen(59963, () => console.log('Now browse to localhost:4000/graphql'));
+app.listen(56171, () => console.log('Now browse to localhost:56171/graphql'));
 
 /*writeFile('./graphql/schema.graphql', printSchema(Schema), err => {
   if(err) throw err;

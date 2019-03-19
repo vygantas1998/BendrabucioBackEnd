@@ -13,7 +13,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 app.listen(56171, () => console.log('Now browse to localhost:56171/graphql'));
 
-/*writeFile('./graphql/schema.graphql', printSchema(Schema), err => {
+writeFile('./graphql/schema.graphql', printSchema(Schema), err => {
   if(err) throw err;
   console.log("GRAPHQL schema created");
-})*/
+})

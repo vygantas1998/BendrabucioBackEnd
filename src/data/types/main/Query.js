@@ -2,7 +2,7 @@ import {
     GraphQLObjectType,
 } from 'graphql';
 import Store from './Store';
-import {nodeField, nodeInterface} from '../interfaces/Node';
+import {nodeField} from '../../Nodes';
 
 const queryType = new GraphQLObjectType({
     name: 'Query',

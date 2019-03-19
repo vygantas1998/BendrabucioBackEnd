@@ -29,8 +29,65 @@ type Query {
   ): Node
 }
 
+type Shower implements Node {
+  """The ID of an object"""
+  id: ID!
+  type: String
+  description: String
+  created_at: String
+  updated_at: String
+}
+
+"""A connection to a list of items."""
+type ShowerConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ShowerEdge]
+}
+
+"""An edge in a connection."""
+type ShowerEdge {
+  """The item at the end of the edge"""
+  node: Shower
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ShowerReservation implements Node {
+  """The ID of an object"""
+  id: ID!
+  shower_id: String
+  reservation_start_time: String
+  reservation_end_time: String
+  created_at: String
+  updated_at: String
+}
+
+"""A connection to a list of items."""
+type ShowerReservationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ShowerReservationEdge]
+}
+
+"""An edge in a connection."""
+type ShowerReservationEdge {
+  """The item at the end of the edge"""
+  node: ShowerReservation
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
 type Store {
   washingMachines(after: String, first: Int, before: String, last: Int): WashingMachineConnection!
+  showers(after: String, first: Int, before: String, last: Int): ShowerConnection!
+  showerReservations(after: String, first: Int, before: String, last: Int): ShowerReservationConnection!
 }
 
 type WashingMachine implements Node {

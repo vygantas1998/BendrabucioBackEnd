@@ -8,9 +8,9 @@ import {
     connectionArgs
 } from 'graphql-relay';
 
-import {getAll} from '../../model/GetDataFromDb'
+import {getAll} from '../../model/database'
 
-import {nodeInterface, WashingMachineConnection, ShowerReservationConnection, ShowerConnection} from '../../Nodes';
+import {nodeInterface, WashingMachineConnection, ShowerReservationConnection, ShowerConnection, WashingMashineReservationConnection} from '../../Nodes';
 
 let storeType = new GraphQLObjectType({
     name: "Store",
@@ -40,6 +40,15 @@ let storeType = new GraphQLObjectType({
             resolve: (_, args) =>
                 connectionFromPromisedArray(
                     getAll("shower_reservation"),
+                    args
+                )
+        },
+        washingMashineReservations: {
+            type: new GraphQLNonNull(WashingMashineReservationConnection),
+            args: connectionArgs,
+            resolve: (_, args) =>
+                connectionFromPromisedArray(
+                    getAll("washing_machine_reservation"),
                     args
                 )
         }

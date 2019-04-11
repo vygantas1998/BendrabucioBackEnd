@@ -38,3 +38,16 @@ export class ShowerReservation{
         }
     }
 }
+export class WashingMachineReservation{
+    constructor(id, washingMashine_id, reservation_start_time, reservation_end_time, created_at, updated_at){
+        this.id = id;
+        this.washingMashine_id = washingMashine_id;
+        this.reservation_start_time = reservation_start_time;
+        this.reservation_end_time = reservation_end_time;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+        if (typeof id === "object") {
+            Object.assign(this, id)
+        }
+    }
+}

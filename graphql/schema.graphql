@@ -1,3 +1,19 @@
+input AddWashingMashineInput {
+  title: String
+  image_url: String
+  description: String
+  clientMutationId: String
+}
+
+type AddWashingMashinePayload {
+  washingMashineEdge: WashingMachineEdge!
+  clientMutationId: String
+}
+
+type Mutation {
+  addWashingMachine(input: AddWashingMashineInput!): AddWashingMashinePayload
+}
+
 """An object with an ID"""
 interface Node {
   """The id of the object."""
@@ -88,6 +104,7 @@ type Store {
   washingMachines(after: String, first: Int, before: String, last: Int): WashingMachineConnection!
   showers(after: String, first: Int, before: String, last: Int): ShowerConnection!
   showerReservations(after: String, first: Int, before: String, last: Int): ShowerReservationConnection!
+  washingMashineReservations(after: String, first: Int, before: String, last: Int): WashingMashineReservationConnection!
 }
 
 type WashingMachine implements Node {
@@ -113,6 +130,34 @@ type WashingMachineConnection {
 type WashingMachineEdge {
   """The item at the end of the edge"""
   node: WashingMachine
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type WashingMashineReservation implements Node {
+  """The ID of an object"""
+  id: ID!
+  washingMashine_id: String
+  reservation_start_time: String
+  reservation_end_time: String
+  created_at: String
+  updated_at: String
+}
+
+"""A connection to a list of items."""
+type WashingMashineReservationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [WashingMashineReservationEdge]
+}
+
+"""An edge in a connection."""
+type WashingMashineReservationEdge {
+  """The item at the end of the edge"""
+  node: WashingMashineReservation
 
   """A cursor for use in pagination"""
   cursor: String!

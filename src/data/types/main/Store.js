@@ -10,7 +10,7 @@ import {
 
 import {getAll} from '../../model/database'
 
-import {nodeInterface, WashingMachineConnection, ShowerReservationConnection, ShowerConnection, WashingMashineReservationConnection} from '../../Nodes';
+import {nodeInterface, WashingMachineConnection, ShowerReservationConnection, ShowerConnection, WashingMachineReservationConnection} from '../../Nodes';
 
 let storeType = new GraphQLObjectType({
     name: "Store",
@@ -43,8 +43,8 @@ let storeType = new GraphQLObjectType({
                     args
                 )
         },
-        washingMashineReservations: {
-            type: new GraphQLNonNull(WashingMashineReservationConnection),
+        washingMachineReservations: {
+            type: new GraphQLNonNull(WashingMachineReservationConnection),
             args: connectionArgs,
             resolve: (_, args) =>
                 connectionFromPromisedArray(

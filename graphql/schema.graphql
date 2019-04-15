@@ -1,17 +1,29 @@
-input AddWashingMashineInput {
+input AddShowerInput {
+  type: String
+  description: String
+  clientMutationId: String
+}
+
+type AddShowerPayload {
+  showerEdge: ShowerEdge!
+  clientMutationId: String
+}
+
+input AddWashingMachineInput {
   title: String
   image_url: String
   description: String
   clientMutationId: String
 }
 
-type AddWashingMashinePayload {
-  washingMashineEdge: WashingMachineEdge!
+type AddWashingMachinePayload {
+  washingMachineEdge: WashingMachineEdge!
   clientMutationId: String
 }
 
 type Mutation {
-  addWashingMachine(input: AddWashingMashineInput!): AddWashingMashinePayload
+  addWashingMachine(input: AddWashingMachineInput!): AddWashingMachinePayload
+  addShower(input: AddShowerInput!): AddShowerPayload
 }
 
 """An object with an ID"""
@@ -104,7 +116,7 @@ type Store {
   washingMachines(after: String, first: Int, before: String, last: Int): WashingMachineConnection!
   showers(after: String, first: Int, before: String, last: Int): ShowerConnection!
   showerReservations(after: String, first: Int, before: String, last: Int): ShowerReservationConnection!
-  washingMashineReservations(after: String, first: Int, before: String, last: Int): WashingMashineReservationConnection!
+  washingMachineReservations(after: String, first: Int, before: String, last: Int): WashingMachineReservationConnection!
 }
 
 type WashingMachine implements Node {
@@ -135,10 +147,10 @@ type WashingMachineEdge {
   cursor: String!
 }
 
-type WashingMashineReservation implements Node {
+type WashingMachineReservation implements Node {
   """The ID of an object"""
   id: ID!
-  washingMashine_id: String
+  washingMachine_id: String
   reservation_start_time: String
   reservation_end_time: String
   created_at: String
@@ -146,18 +158,18 @@ type WashingMashineReservation implements Node {
 }
 
 """A connection to a list of items."""
-type WashingMashineReservationConnection {
+type WashingMachineReservationConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [WashingMashineReservationEdge]
+  edges: [WashingMachineReservationEdge]
 }
 
 """An edge in a connection."""
-type WashingMashineReservationEdge {
+type WashingMachineReservationEdge {
   """The item at the end of the edge"""
-  node: WashingMashineReservation
+  node: WashingMachineReservation
 
   """A cursor for use in pagination"""
   cursor: String!

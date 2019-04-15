@@ -8,30 +8,30 @@ import {GraphQLNonNull, GraphQLString} from 'graphql';
 import { GraphQLWashingMachineEdge } from '../../Nodes';
 import { getAll, getOne, addOne } from '../../model/database';
 
-  const AddWashingMashineMutation = mutationWithClientMutationId({
-    name: 'AddWashingMashine',
+  const AddWashingMachineMutation = mutationWithClientMutationId({
+    name: 'AddWashingMachine',
     inputFields: {
         title: { type: GraphQLString },
         image_url: { type: GraphQLString },
         description: { type: GraphQLString },
     },
     outputFields: {
-      washingMashineEdge: {
+      washingMachineEdge: {
         type: new GraphQLNonNull(GraphQLWashingMachineEdge),
-        resolve: ({washingMashineId}) => {
-          const washingMashine = getOne(washingMashineId, "washing_machine");
+        resolve: async({washingMachineId}) => {
+          const washingMachine = await getOne(await washingMachineId, "washing_machine");
           return {
-            cursor: cursorForObjectInConnection([...getAll("washing_machine")], washingMashine),
-            node: washingMashine,
+            cursor: cursorForObjectInConnection([...await getAll("washing_machine")], washingMachine),
+            node: washingMachine,
           };
         },
       },
     },
     mutateAndGetPayload: (data) => {
-      const washingMashineId = addOne(data, "washing_machine");
-      return {washingMashineId};
+      const washingMachineId = addOne(data, "washing_machine");
+      return {washingMachineId};
     },
   });
   
-  export {AddWashingMashineMutation};
+  export {AddWashingMachineMutation};
   

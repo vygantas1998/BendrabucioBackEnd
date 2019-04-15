@@ -1,14 +1,19 @@
 import {
     GraphQLObjectType,
 } from 'graphql';
-import { AddWashingMashineMutation } from './mutations/AddWashingMashineMutation';
+import { AddShowerMutation } from './mutations/AddShowerMutation';
+import { AddWashingMachineMutation } from './mutations/AddWashingMachineMutation';
+import { AddShowerReservationMutation } from './mutations/AddShowerReservationMutation';
 
 
 
 const mutationType = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
-      addWashingMachine: AddWashingMashineMutation,
+      addWashingMachine: AddWashingMachineMutation,
+      addShower: AddShowerMutation,
+      addWashingMachineReservation: AddShowerReservationMutation,
+      addShowerReservation: AddShowerReservationMutation
     },
   });
 export default mutationType;

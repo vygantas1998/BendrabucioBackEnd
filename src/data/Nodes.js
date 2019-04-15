@@ -42,7 +42,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
         } else if (obj instanceof ShowerReservation){
             return showerReservationType;
         } else if (obj instanceof WashingMachineReservation){
-            return washingMashineReservationType;
+            return washingMachineReservationType;
         }
         return null;
     },
@@ -78,7 +78,7 @@ const showerType = new GraphQLObjectType({
     isTypeOf: () => "Shower",
     interfaces: [nodeInterface],
 })
-const { connectionType: ShowerConnection } = connectionDefinitions({
+const { connectionType: ShowerConnection, edgeType: GraphQLShowerEdge } = connectionDefinitions({
     name: "Shower",
     nodeType: showerType
 });
@@ -96,35 +96,37 @@ const showerReservationType = new GraphQLObjectType({
     isTypeOf: () => "ShowerReservation",
     interfaces: [nodeInterface],
 })
-const { connectionType: ShowerReservationConnection } = connectionDefinitions({
+const { connectionType: ShowerReservationConnection, edgeType: GraphQLShowerReservationEdge } = connectionDefinitions({
     name: "ShowerReservation",
     nodeType: showerReservationType
 });
 
-const washingMashineReservationType = new GraphQLObjectType({
-    name: "WashingMashineReservation",
+const washingMachineReservationType = new GraphQLObjectType({
+    name: "WashingMachineReservation",
     fields: () => ({
-        id: globalIdField("WashingMashineReservation"),
-        washingMashine_id: { type: GraphQLString },
+        id: globalIdField("WashingMachineReservation"),
+        washingMachine_id: { type: GraphQLString },
         reservation_start_time: { type: GraphQLString },
         reservation_end_time: { type: GraphQLString },
         created_at: { type: GraphQLString },
         updated_at: { type: GraphQLString },
     }),
-    isTypeOf: () => "WashingMashineReservation",
+    isTypeOf: () => "WashingMachineReservation",
     interfaces: [nodeInterface],
 })
-const { connectionType: WashingMashineReservationConnection } = connectionDefinitions({
-    name: "WashingMashineReservation",
-    nodeType: washingMashineReservationType
+const { connectionType: WashingMachineReservationConnection, edgeType: GraphQLWashingMachineReservationEdge } = connectionDefinitions({
+    name: "WashingMachineReservation",
+    nodeType: washingMachineReservationType
 });
 
 
-export {washingMachineType, GraphQLWashingMachineEdge, WashingMachineConnection, washingMashineReservationType, WashingMashineReservationConnection};
+export {washingMachineType, GraphQLWashingMachineEdge, WashingMachineConnection};
 
-export {showerType, ShowerConnection};
+export {washingMachineReservationType, WashingMachineReservationConnection, GraphQLWashingMachineReservationEdge};
 
-export {showerReservationType, ShowerReservationConnection};
+export {showerType, ShowerConnection, GraphQLShowerEdge};
+
+export {showerReservationType, ShowerReservationConnection, GraphQLShowerReservationEdge};
 
 
 export {nodeInterface, nodeField};

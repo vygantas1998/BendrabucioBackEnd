@@ -1,6 +1,6 @@
 import mariadb from 'mariadb';
 import "@babel/polyfill";
-import {WashingMachine, Shower, ShowerReservation} from '../interfaces/types';
+import {WashingMachine, Shower, ShowerReservation, WashingMachineReservation} from '../interfaces/types';
 import uuid from 'uuid/v1';
 
 const pool = mariadb.createPool({
@@ -29,6 +29,8 @@ const getOne = async(id, table) => {
             return new ShowerReservation(rows[0]);
         case "washing_machine":
             return new WashingMachine(rows[0]);
+        case "washing_machine_reservation":
+            return new WashingMachineReservation(rows[0]);
     }
 }
 
@@ -49,15 +51,8 @@ const addOne = async(data, table) =>{
         }
     });
     const id = uuid();
-    const rows = await conn.query(`INSERT INTO ${table} ( id, ${keys}) VALUES ( '${id}', ${values})`);
+    await conn.query(`INSERT INTO ${table} ( id, ${keys}) VALUES ( '${id}', ${values})`);
     if (conn) conn.end();
-    switch(table){
-        case "shower":
-            return new Shower(rows[0]);
-        case "shower_reservation":
-            return new ShowerReservation(rows[0]);
-        case "washing_machine":
-            return new WashingMachine(rows[0]);
-    }
+    return id;
 }
 export {getAll, getOne, addOne};

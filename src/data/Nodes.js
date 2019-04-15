@@ -105,7 +105,7 @@ const washingMachineReservationType = new GraphQLObjectType({
     name: "WashingMachineReservation",
     fields: () => ({
         id: globalIdField("WashingMachineReservation"),
-        washingMachine_id: { type: GraphQLString },
+        washing_machine_id: { type: GraphQLString },
         reservation_start_time: { type: GraphQLString },
         reservation_end_time: { type: GraphQLString },
         created_at: { type: GraphQLString },
